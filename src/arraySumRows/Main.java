@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Timer;
 
 import static com.sun.org.apache.xerces.internal.utils.SecuritySupport.getResourceAsStream;
 
@@ -14,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
 //        String str = "4000 30000\n" +
 //                "2250 2540 180674";
-
+        int curTime = (int) System.currentTimeMillis() % 1000000;
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File("src/arraySumRows/input/input1.txt"));
@@ -40,20 +41,22 @@ public class Main {
         }
 
         System.out.println(arrayManipulation(n, arr));
+        System.out.println(System.currentTimeMillis() % 1000000 - curTime);
     }
     // Complete the arrayManipulation function below.
 
     static long arrayManipulation(int n, int[][] queries) {
-        long maxValue = Integer.MIN_VALUE;
-        long[] arr = new long[n+1];
+//        long maxValue = Integer.MIN_VALUE;
+        long[] arr = new long[n + 1];
         //Summarize values in raws
         for (int i = 0; i < queries.length; i++) {
             for (int j = queries[i][0]; j <= queries[i][1]; j++) {
-                arr[j]+=queries[i][2];
-                maxValue = Math.max(maxValue,arr[j]);
+                arr[j] += queries[i][2];
+//                maxValue = Math.max(maxValue, arr[j]);
             }
         }
-        return maxValue;
+
+        return Arrays.stream(arr).max().getAsLong();
     }
 
 }
