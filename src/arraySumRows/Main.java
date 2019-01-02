@@ -2,23 +2,17 @@ package arraySumRows;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Timer;
-
-import static com.sun.org.apache.xerces.internal.utils.SecuritySupport.getResourceAsStream;
 
 public class Main {
-
-
     public static void main(String[] args) {
 //        String str = "4000 30000\n" +
 //                "2250 2540 180674";
-        int curTime = (int) System.currentTimeMillis() % 1000000;
+//        int curTime = (int) System.currentTimeMillis() % 1000000;
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File("src/arraySumRows/input/input1.txt"));
+            scanner = new Scanner(new File("src/arraySumRows/input/input2.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -41,22 +35,72 @@ public class Main {
         }
 
         System.out.println(arrayManipulation(n, arr));
-        System.out.println(System.currentTimeMillis() % 1000000 - curTime);
+//        System.out.println(System.currentTimeMillis() % 1000000 - curTime);
     }
     // Complete the arrayManipulation function below.
 
+
     static long arrayManipulation(int n, int[][] queries) {
-//        long maxValue = Integer.MIN_VALUE;
-        long[] arr = new long[n + 1];
-        //Summarize values in raws
-        for (int i = 0; i < queries.length; i++) {
-            for (int j = queries[i][0]; j <= queries[i][1]; j++) {
-                arr[j] += queries[i][2];
-//                maxValue = Math.max(maxValue, arr[j]);
+        //define number of threads
+        int processes = Runtime.getRuntime().availableProcessors() * 2;
+        if (n<100000) {
+            processes = 1;
+        }
+        MyThread[] threads = new MyThread[processes];
+
+        long[][] arr = new long[processes][n + 1];
+        int range = (queries.length - 1) / processes + 1;
+
+        //Start
+        for (int i = 0; i < processes; i++) {
+            if (i * range < queries.length) {
+                threads[i] = new MyThread(arr, i, Arrays.copyOfRange(queries, i * range, Math.min((i+1) * range,queries.length)));
+                threads[i].start();
+            } else {
+                processes = i;
+                break;
             }
         }
 
-        return Arrays.stream(arr).max().getAsLong();
+//      Waiting while all threads will be finished!
+        for (int i = 0; i < processes; i++) {
+            try {
+                threads[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //Summirize and find max value
+        long maxValue = Integer.MIN_VALUE;
+        for (int i = 0; i < arr[0].length; i++) {
+            long sumOfColumn = 0;
+            for (int j = 0; j < arr.length ; j++) {
+                sumOfColumn+=arr[j][i];
+            }
+            maxValue = Math.max(sumOfColumn,maxValue);
+        }
+        return maxValue;
     }
 
+    public static class MyThread extends Thread {
+        private long[][] arr;
+        private int number;
+        private int[][] queries;
+
+        public MyThread(long[][] arr, int num, int[][] queries) {
+            this.arr = arr;
+            this.number = num;
+            this.queries = queries;
+        }
+
+        public void run() {
+            //Summarize values in raws
+            for (int i = 0; i < this.queries.length; i++) {
+                for (int j = this.queries[i][0]; j <= this.queries[i][1]; j++) {
+                    this.arr[this.number][j] += this.queries[i][2];
+                }
+            }
+        }
+    }
 }
