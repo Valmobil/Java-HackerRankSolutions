@@ -1,10 +1,7 @@
 package stringCheckForAnogram;
 
 import javax.swing.*;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,29 +12,19 @@ public class Main {
     // Complete the sherlockAndAnagrams function below.
     static int sherlockAndAnagrams(String s) {
         int count = 0;
-        Hashtable<String, String> hashtable = new Hashtable();
+        ArrayList list = new ArrayList();
         for (int i = 0; i < s.length(); i++) {
             for (int j = 1; j <= s.length() - 1; j++) {
                 if (i + j > s.length()) break;
-                hashtable.put(i + "_" + (i + j - 1), s.substring(i, i + j));
+                list.add(s.substring(i, i + j));
             }
         }
-        String valueMaster = "";
-        String keyMaster = "";
-        while (hashtable.size() > 0) {
-            int step = 0;
-            for (String key : hashtable.keySet()) {
-                if (step == 0) {
-                    valueMaster = hashtable.get(key);
-                    keyMaster = key;
-                    step = 1;
-                } else {
-                    if (ifAnogram(valueMaster, hashtable.get(key))) {
-                        count++;
-                    }
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if (ifAnogram(list.get(i), list.get(j))) {
+                    count++;
                 }
             }
-            hashtable.remove(keyMaster);
         }
         return count;
     }
