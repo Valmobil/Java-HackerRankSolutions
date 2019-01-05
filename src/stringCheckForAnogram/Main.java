@@ -12,7 +12,7 @@ public class Main {
     // Complete the sherlockAndAnagrams function below.
     static int sherlockAndAnagrams(String s) {
         int count = 0;
-        ArrayList list = new ArrayList();
+        ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
             for (int j = 1; j <= s.length() - 1; j++) {
                 if (i + j > s.length()) break;
@@ -37,7 +37,7 @@ public class Main {
         HashMap<Character, Integer> hashMapS1 = convertStringToCharHashMap(s1);
         HashMap<Character, Integer> hashMapS2 = convertStringToCharHashMap(s2);
         for (Character key : hashMapS1.keySet()) {
-            if (hashMapS1.get(key) != hashMapS2.get(key)) {
+            if (hashMapS1.get(key).equals(hashMapS2.get(key))) {
                 return false;
             }
         }
@@ -45,7 +45,7 @@ public class Main {
     }
 
     private static HashMap convertStringToCharHashMap(String s2) {
-        HashMap<Character, Integer> hashMap = new HashMap();
+        HashMap<Character, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < s2.length(); i++) {
             if (hashMap.containsKey(s2.charAt(i))) {
                 hashMap.put(s2.charAt(i), hashMap.get(s2.charAt(i)) + 1);
