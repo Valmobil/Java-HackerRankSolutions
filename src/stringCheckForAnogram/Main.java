@@ -44,7 +44,7 @@ public class Main {
         return true;
     }
 
-    private static HashMap convertStringToCharHashMap(String s2) {
+    public static HashMap convertStringToCharHashMap(String s2) {
         HashMap<Character, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < s2.length(); i++) {
             if (hashMap.containsKey(s2.charAt(i))) {
