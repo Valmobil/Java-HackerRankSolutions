@@ -41,7 +41,6 @@ public class Main {
         for (Long element : arr) {
             if (element.equals(prevValue)) {
                 repetitiveCount++;
-                continue;
             } else {
                 if (repetitiveCount > 0) {
                     addElement(prevValue, repetitiveCount, r, arrLevel);
@@ -59,16 +58,19 @@ public class Main {
         }
         //Count Calculation
 
-//        for (Map.Entry<Long, long[]> entryLevel1 : arrLevel.entrySet()) {
-//            Long entryValueLevel1 = entryLevel1.getValue()[0];
-//            Long entryValueLevel2 = entryLevel1.getValue()[1];
-//            Long entryValueLevel3 = entryLevel1.getValue()[2];
-//            if (entryValueLevel1.equals(entryValueLevel2) && entryValueLevel2.equals(entryValueLevel3)) {
-//                count += (entryValueLevel1 * (entryValueLevel1 - 1) * (entryValueLevel1 - 2)) / 6;
-//            } else {
-//                count += entryValueLevel3 * entryValueLevel2 * entryValueLevel1;
-//            }
-//        }
+        for (Map.Entry<Long, List<long[]>> entryLevel1 : arrLevel.entrySet()) {
+            for (int i = 0; i < entryLevel1.getValue().size() ; i++) {
+                Long entryValueLevel1 = entryLevel1.getValue().get(i)[0];
+                Long entryValueLevel2 = entryLevel1.getValue().get(i)[1];
+                Long entryValueLevel3 = entryLevel1.getValue().get(i)[2];
+                if (entryValueLevel1.equals(entryValueLevel2) && entryValueLevel2.equals(entryValueLevel3)) {
+                    count += (entryValueLevel1 * (entryValueLevel1 - 1) * (entryValueLevel1 - 2)) / 6;
+                } else {
+                    count += entryValueLevel3 * entryValueLevel2 * entryValueLevel1;
+                }
+
+            }
+        }
         return count;
     }
 
@@ -81,8 +83,8 @@ public class Main {
             needCreateNewLine = true;
             level1Index = 0;
             for (int i = 0; i < tempArr.size(); i++) {
-                if (level1Index != tempArr.get(i)[3] && needCreateNewLine ) {
-                    tempArr.add(i, new long[]{repetitiveCount, 0L, 0L, level1Index});
+                if (level1Index != tempArr.get(i)[3] && needCreateNewLine) {
+                    tempArr.add(i, new long[]{repetitiveCount, 0L, 0L, ++level1Index});
                     i++;
                     needCreateNewLine = true;
                 }
@@ -92,38 +94,49 @@ public class Main {
                 }
                 level1Index = tempArr.get(i)[3];
             }
+            if (needCreateNewLine) {
+                tempArr.add(new long[]{repetitiveCount, 0L, 0L, ++level1Index});
+            }
         } else {
-            arrLevel.put(element, new ArrayList<long[]>());
+            arrLevel.put(element, new ArrayList<>());
             arrLevel.get(element).add(new long[]{repetitiveCount, 0L, 0L, 0L});
         }
-//        //Level 2
-//        Long elementMinus1 = element / r;
-//        needCreateNewLineLastQty = 0;
-//        if (arrLevel.containsKey(elementMinus1) && elementMinus1 * r == element) {
-//            List<long[]> tempArr = arrLevel.get(elementMinus1);
-////            needCreateNewLine = true;
-//            for (int i = 0; i < tempArr.size(); i++) {
-//                needCreateNewLineLastQty = tempArr.get(i)[0];
-//                if (tempArr.get(i)[2] == 0) {
-//                    tempArr.get(i)[1] += repetitiveCount;
-////                    needCreateNewLine = false;
-//                }
-//            }
-////            if (needCreateNewLine) {
-////                tempArr.add(new long[]{needCreateNewLineLastQty, repetitiveCount, 0L});
-//        }
-//    }
-//
-////    Level 3
-//    Long elementMinus2 = elementMinus1 / r;
-//        if(arrLevel.containsKey(elementMinus2)&&elementMinus2 *r ==elementMinus1)
-//
-//    {
-//        List<long[]> tempArr = arrLevel.get(elementMinus2);
-//
-//        for (int i = 0; i < tempArr.size(); i++) {
-//            tempArr.get(i)[2] += repetitiveCount;
-//        }
+        //Level 2
+        Long elementMinus1 = element / r;
+        level1Index = 0;
+        long needCreateNewLineLastQty = 0;
+        if (arrLevel.containsKey(elementMinus1) && elementMinus1 * r == element) {
+            List<long[]> tempArr = arrLevel.get(elementMinus1);
+            needCreateNewLine = true;
+            for (int i = 0; i < tempArr.size(); i++) {
+                //If we need to create new line
+                if (level1Index != tempArr.get(i)[3] && needCreateNewLine) {
+                    tempArr.add(i, new long[]{needCreateNewLineLastQty, repetitiveCount, 0L, level1Index});
+                    i++;
+                    needCreateNewLine = true;
+                }
+
+                if (tempArr.get(i)[2] == 0) {
+                    tempArr.get(i)[1] += repetitiveCount;
+                    needCreateNewLine = false;
+                }
+                level1Index = tempArr.get(i)[3];
+                needCreateNewLineLastQty = tempArr.get(i)[0];
+            }
+            if (needCreateNewLine) {
+                tempArr.add(new long[]{needCreateNewLineLastQty, repetitiveCount, 0L, level1Index});
+            }
+        }
+
+//    Level 3
+        Long elementMinus2 = elementMinus1 / r;
+        if (arrLevel.containsKey(elementMinus2) && elementMinus2 * r == elementMinus1) {
+            List<long[]> tempArr = arrLevel.get(elementMinus2);
+
+            for (long[] longs : tempArr) {
+                longs[2] += repetitiveCount;
+            }
+        }
     }
 
 
@@ -148,4 +161,4 @@ public class Main {
 //        }
 //        return count;
 //    }
-}
+    }
