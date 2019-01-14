@@ -53,7 +53,7 @@ public class hashMapFindTripleIndexTest {
     }
 
 
-    @Test
+       @Test
     public void testSimpleFifth() {
         String test = "1 5 5 25 125";
         int r = 5;
@@ -62,5 +62,16 @@ public class hashMapFindTripleIndexTest {
         List<Long> arr = Stream.of(arrString).map(Long::valueOf).collect(Collectors.toList());
         Assert.assertEquals(answer, countTriplets(arr, r));
     }
+
+    @Test
+    public void testSimpleSixth() {
+        String test = "6 2 18 6 2";
+        int r = 3;
+        int answer = 0;
+        String[] arrString = test.split(" ");
+        List<Long> arr = Stream.of(arrString).map(Long::valueOf).collect(Collectors.toList());
+        Assert.assertEquals(answer, countTriplets(arr, r));
+    }
+
 
 }
