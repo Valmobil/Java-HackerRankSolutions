@@ -7,7 +7,7 @@ import java.util.List;
 
 import static rearInputFromString.rearInputFromString.convertString;
 
-public class rearInputFromStringTest {
+public class readInputFromStringTest {
 
     @Test
     public void testStrinConvertion() {
