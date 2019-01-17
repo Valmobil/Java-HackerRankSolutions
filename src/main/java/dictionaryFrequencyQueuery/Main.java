@@ -1,16 +1,12 @@
 package dictionaryFrequencyQueuery;
 
-import com.sun.corba.se.impl.orbutil.ObjectUtility;
-
-import static arrayChangeArrayLength.arrayChangeArrayLength.arrayLengthChangeLowerBorder;
-import static arrayChangeArrayLength.arrayChangeArrayLength.arrayLengthChangeUpperBorder;
 import static java.util.stream.Collectors.joining;
-import static rearInputFromString.rearInputFromString.convertString;
+import static utilsReadInputFromString.ReadInputFromString.convertString;
 
 import java.io.*;
 import java.util.*;
 
-public class dictionaryFrequencyQueuery {
+public class Main {
     public static void main(String[] args) {
         String str = "1000\n" +
                 "3 5\n" +

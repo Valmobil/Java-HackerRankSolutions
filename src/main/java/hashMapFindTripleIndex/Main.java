@@ -1,10 +1,8 @@
 package hashMapFindTripleIndex;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static readInputFromFile.ReadFromFile.readFromFile;
+import static utilsReadInputFromFile.ReadFromFile.readFromFile;
 
 public class Main {
 

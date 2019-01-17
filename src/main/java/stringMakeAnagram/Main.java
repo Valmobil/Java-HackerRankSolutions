@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import static stringCheckForAnogram.Main.convertStringToCharHashMap;
 
-public class StringMakeAnagram {
+public class Main {
 
 
     public static void main(String[] args) {

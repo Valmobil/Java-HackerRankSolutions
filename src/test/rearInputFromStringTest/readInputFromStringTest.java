@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static rearInputFromString.rearInputFromString.convertString;
+import static utilsReadInputFromString.ReadInputFromString.convertString;
 
 public class readInputFromStringTest {
 

@@ -1,6 +1,6 @@
 package primitivesAVeryBigSum;
 
-public class primitivesAVeryBigSum {
+public class Main {
 
     public static void main(String[] args) {
         long[] ar = new long[]{1000000001, 1000000002, 1000000003, 1000000004, 1000000005};
@@ -8,7 +8,7 @@ public class primitivesAVeryBigSum {
     }
 
     // Complete the aVeryBigSum function below.
-    static long aVeryBigSum(long[] ar) {
+    private static long aVeryBigSum(long[] ar) {
         long sum = 0L;
         for (long elem: ar             ) {
             sum+=elem;

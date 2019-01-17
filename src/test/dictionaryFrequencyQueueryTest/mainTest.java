@@ -1,18 +1,16 @@
 package dictionaryFrequencyQueueryTest;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
-import static org.hamcrest.CoreMatchers.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static dictionaryFrequencyQueuery.dictionaryFrequencyQueuery.freqQuery;
-import static rearInputFromString.rearInputFromString.convertString;
+import static dictionaryFrequencyQueuery.Main.freqQuery;
+import static utilsReadInputFromString.ReadInputFromString.convertString;
 
-public class dictionaryFrequencyQueueryTest {
+public class mainTest {
     @Test
     public void testOne() {
         String str = "8\n" +

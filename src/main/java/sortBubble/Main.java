@@ -1,6 +1,6 @@
 package sortBubble;
 
-public class sortBubble {
+public class Main {
     public static void main(String[] args) {
         int[] a = {3,2,1};
         countSwaps(a);

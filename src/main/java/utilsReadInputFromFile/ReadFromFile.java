@@ -1,4 +1,4 @@
-package readInputFromFile;
+package utilsReadInputFromFile;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,9 +1,9 @@
-package rearInputFromString;
+package utilsReadInputFromString;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class rearInputFromString {
+public class ReadInputFromString {
 
 
     public static void main(String[] args) {
