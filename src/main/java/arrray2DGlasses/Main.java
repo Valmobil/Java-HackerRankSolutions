@@ -1,4 +1,4 @@
-package santGlasses2dArray;
+package arrray2DGlasses;
 
 import java.util.Arrays;
 

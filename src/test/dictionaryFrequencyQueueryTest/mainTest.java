@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static dictionaryFrequencyQueuery.Main.freqQuery;
+import static org.junit.Assert.assertTrue;
+import static utilsReadInputFromFile.hashMapFrequencyQueuery.Main.freqQuery;
 import static utilsReadInputFromString.ReadInputFromString.convertString;
 
 public class mainTest {
@@ -29,6 +30,6 @@ public class mainTest {
         int[][] body = (int[][]) list.get(1);
         List<Integer> result = freqQuery(body);
 
-        Assert.assertTrue(answer .equals(result));
+        assertTrue(result.equals(answer));
     }
 }

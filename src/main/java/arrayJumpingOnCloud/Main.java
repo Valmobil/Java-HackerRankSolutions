@@ -1,4 +1,4 @@
-package jumpingOnCloud;
+package arrayJumpingOnCloud;
 
 public class Main {
 

@@ -1,17 +1,30 @@
 package sortItemGretherThenMediana;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Main {
 
     // Complete the activityNotifications function below.
     public static int activityNotifications(int[] expenditure, int d) {
+//        FileOutputStream fos = null;
+//        try {
+//            fos = new FileOutputStream(new File("C:\\temp\\test.csv"), false);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        Writer out = new OutputStreamWriter(new BufferedOutputStream(fos), UTF_8);
         int countInMedian = d;
         int count = 0;
+        boolean oddMediar = false;
+        if (d % 2 == 1) {
+            oddMediar = true;
+        }
         int medianItemIndex = 0;
         int medianItem = expenditure[0];
+        int medianItemTwo = expenditure[0];
         TreeMap<Integer, Integer> array = new TreeMap<>();
         for (int i = 0; i < expenditure.length; i++) {
 //            if (medianItem == 101) {
@@ -29,6 +42,10 @@ public class Main {
                     if (sum > countInMedian / 2) {
                         medianItem = mapItem;
                         medianItemIndex = array.get(mapItem) - (sum - countInMedian / 2) + 1;
+                        medianItemTwo = medianItem;
+                        if (!oddMediar && medianItemIndex == 1) {
+                            medianItemTwo = array.floorKey(medianItem - 1);
+                        }
                         break;
                     }
                 }
@@ -42,13 +59,17 @@ public class Main {
                 }
                 d--;
             } else {
-                System.out.print(medianItem + " ");
-                if (medianItem * 2 <= item) {
+                if (medianItem + medianItemTwo <= item) {
                     count++;
                 }
                 //update array
                 int intToDelete;
                 intToDelete = expenditure[i - countInMedian];
+//                try {
+//                    out.write(String.format("i=%s %s %s %s%n", i, medianItem, item, intToDelete));
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
                 //delete element from MAP Array
                 array.replace(intToDelete, array.get(intToDelete) - 1);
                 //insert element to MAP Array
@@ -78,6 +99,14 @@ public class Main {
                         }
                     }
                 }
+                medianItemTwo = medianItem;
+                if (!oddMediar && medianItemIndex == 1) {
+                    medianItemTwo = array.floorKey(medianItem - 1);
+                    while (array.get(medianItemTwo) == 0) {
+                        medianItemTwo = array.floorKey(medianItemTwo - 1);
+                    }
+                }
+
 //                //Alternative median calculation
 //                int sum = 0;
 //                int medianNew = 0;
@@ -107,7 +136,7 @@ public class Main {
         int medianIndex = d / 2;
         int medianCurrent;
         Integer[] medianArray = new Integer[d];
-        Queue<Integer> medianStack = new LinkedList();
+        Queue<Integer> medianStack = new LinkedList<>();
         for (int item : expenditure) {
             if (d > 0) {
                 medianStack.add(item);
@@ -131,8 +160,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner;
 
-        boolean readFromFile = true;
-        if (readFromFile) {
+        final boolean READ_FROM_FILE = true;
+        if (READ_FROM_FILE) {
             scanner = new Scanner(new File("src/main/java/sortItemGretherThenMediana/input/input.txt"));
         } else {
             String str = "5 3\n" +
@@ -154,9 +183,9 @@ public class Main {
         }
 //        for (int i = 10230; i < expenditure.length; i++) {
 //            System.out.println("i=" + i);
-            System.out.println("New one: " + activityNotifications(expenditure, d));
+        System.out.println("New one: " + activityNotifications(expenditure, d));
 //            System.out.println("New one: " + activityNotifications(Arrays.copyOf(expenditure, i), d));
-            System.out.println("Old one: " + activityNotificationsOld(expenditure, d));
+//            System.out.println("Old one: " + activityNotificationsOld(expenditure, d));
 //            System.out.println("Old one: " + activityNotificationsOld(Arrays.copyOf(expenditure, i), d));
 //        }
 
