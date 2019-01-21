@@ -14,7 +14,7 @@ public class Main {
         System.out.println(Arrays.toString(quickSort(randomIntsArray, 0, randomIntsArray.length - 1)));
     }
 
-    private static int[] quickSort(int[] arr, int ind1, int ind2) {
+    static int[] quickSort(int[] arr, int ind1, int ind2) {
         if (ind2 - ind1 < 2) {
             if (arr[ind1] <= arr[ind2]) {
                 return arr;

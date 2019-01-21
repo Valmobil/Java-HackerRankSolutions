@@ -1,4 +1,4 @@
-package hillscalculation;
+package stringHillsCalculation;
 
 
 public class Main {
