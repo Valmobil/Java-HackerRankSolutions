@@ -1,4 +1,4 @@
-package utilsReadInputFromFile.hashMapFrequencyQueuery;
+package hashMapFrequencyQueuery;
 
 import static java.util.stream.Collectors.joining;
 import static utilsReadInputFromString.ReadInputFromString.convertString;

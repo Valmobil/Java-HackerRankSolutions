@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ReadFromFile {
 
-    public static List<Long> readFromFile(String pathPlusFileName) {
+    public static List<Long> readFromFile(String pathPlusFileName, int parameterQty) {
         Scanner scanner = null;
         try {
 //            scanner = new Scanner(new File("src/arraySumRows/input/input3.txt"));
@@ -17,7 +17,7 @@ public class ReadFromFile {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
+        int[] parameters = new int[parameterQty];
         String[] nm = Objects.requireNonNull(scanner).nextLine().split(" ");
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
         int n = Integer.parseInt(nm[0]);
