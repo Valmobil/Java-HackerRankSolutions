@@ -1,12 +1,11 @@
-package arrayAbsoluteDiference;
+package sortedTreeFindMinAbsoluteDiference;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
 
-import static arrayAbsoluteDiference.Main.minimumAbsoluteDifference;
-import static org.junit.Assert.*;
+import static sortedTreeFindMinAbsoluteDiference.Main.minimumAbsoluteDifference;
 
 public class MainTest {
 
