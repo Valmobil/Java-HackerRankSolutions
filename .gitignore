@@ -62,3 +62,6 @@ hs_err_pid*
 /ui.lnf.xml
 /notifications.xml
 /blankMavenProject.iml
+out/production/Java-HackerRankSolutions/META-INF/
+out/production/Java-HackerRankSolutions/arraySumRows/
+out/production/Java-HackerRankSolutions/hashMapFindTripleIndex/
