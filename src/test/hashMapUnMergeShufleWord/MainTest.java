@@ -11,7 +11,7 @@ public class MainTest {
 //    String input = "eggegg";
     //        String input = "aeiouuoiea";
 //        String input = "abcdefgabcdefg";
-//    String input = "bdabaceadaedaaaeaecdeadababdbeaeeacacaba"; //answer aaaaaabaaceededecbdb
+   String input = "bdabaceadaedaaaeaecdeadababdbeaeeacacaba"; //answer aaaaaabaaceededecbdb
 
     @Test
    public void testOne() {
@@ -27,8 +27,20 @@ public class MainTest {
     public void testThree() {
         assertEquals("agfedcb", reverseShuffleMerge("abcdefgabcdefg"));
     }
+
     @Test
     public void testFour() {
         assertEquals("aaaaaabaaceededecbdb", reverseShuffleMerge("bdabaceadaedaaaeaecdeadababdbeaeeacacaba"));
     }
+
+    @Test
+    public void testFive() {
+        String input = "sbcnzxqnrygkocahxjebvueaawwcythjdrhvizqsshgtwdolmillxpshxpxqrywkivceufclhydhshrklkphajbftuapiocjlcthfirhgaohfysqjolssbzhbovdstbyqdpnjbpfmgqrzfctcwcrztvgbegunarvecseoulabaonguckqbtrvuagreyclyjytpvozqdnhldlnsocenuzksawirgsbjobpldjdlrxbricrauuksbmecvvwagnnacaqghmjpzrlsvlpbbcuaddgvlhvuvkxexjcfhxrodmcwlrzyyiksuksshhonahsyzbbprwuitmoyoqurtqsaslevgvpfbzkkhgcnpjdpseuiylluvdetsqssbrxpiclxxvosuqipsqvvwsezhl";
+        String result = "aaaaaavvcembskuabxddlpbbsgiaskucosdlhndqzovpjlcyerauvrbcugnbluescevrnubgvtzrcwccfzrqgmfpbjnpdqybtsdvobhzsslojqsyfhoghrifhtclcoiputjhpklkrhsdyhlcuevikwyrqxpxhspxllimlowtghssqzivhrjtywweuvejxokgyrnqxzns";
+        assertEquals(result, reverseShuffleMerge(input));
+    }
+
+
+
 }
+
