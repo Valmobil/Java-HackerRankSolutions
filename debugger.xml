@@ -80,6 +80,28 @@
     <CustomRenderers VERSION="8">
       <Renderer ID="CompoundTypeRenderer">
         <option name="ENABLED" value="true" />
+        <option name="QUALIFIED_NAME" value="java.lang.Integer" />
+        <Renderer ID="EnumerationChildrenRenderer" role="children">
+          <option name="QUALIFIED_NAME" value="java.lang.Integer" />
+          <option name="AppendDefault" value="true" />
+          <ChildrenExpression Name="">
+            <TextWithImports text="lіstOfCosts.get(j).getKey()&#13;&#13;JAVA" type="expression" />
+          </ChildrenExpression>
+        </Renderer>
+      </Renderer>
+      <Renderer ID="CompoundTypeRenderer">
+        <option name="ENABLED" value="true" />
+        <option name="QUALIFIED_NAME" value="java.util.ArrayList" />
+        <Renderer ID="EnumerationChildrenRenderer" role="children">
+          <option name="QUALIFIED_NAME" value="java.util.ArrayList" />
+          <option name="AppendDefault" value="true" />
+          <ChildrenExpression Name="">
+            <TextWithImports text="lіstOfCosts.get(i).getKey()&#13;&#13;JAVA" type="expression" />
+          </ChildrenExpression>
+        </Renderer>
+      </Renderer>
+      <Renderer ID="CompoundTypeRenderer">
+        <option name="ENABLED" value="true" />
         <option name="QUALIFIED_NAME" value="int[]" />
         <Renderer ID="EnumerationChildrenRenderer" role="children">
           <option name="QUALIFIED_NAME" value="int[]" />
