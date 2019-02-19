@@ -1,17 +1,38 @@
 package arrayListIceCreamParlor;
 
+import javax.jws.soap.SOAPBinding;
+import java.nio.file.Paths;
+import java.text.Format;
 import java.util.*;
+
+import static utilsReadInputFromFile.ReadFromFile.readFromFile;
 
 public class Main {
 
     public static void main(String[] args) {
-        String string = "1 4 5 3 2";
-        int[] arr = Arrays.stream(string.split(" ")).mapToInt(Integer::parseInt).toArray();
-        whatFlavors(arr, 4);
+        String pathPlusFileName = "src/main/java/arrayListIceCreamParlor/input/input01.txt";
+        int parameterQty = 2;
+        List<Integer[]> parameterList = readFromFile(pathPlusFileName, parameterQty);
+        Integer[] get = parameterList.get(1);
+//        for (int i = 0; i < get.length; i++) {
+//            Integer num = get[i];
+//            if (num == null) {
+//                System.out.println(i);
+//            }
+//        }
+        System.out.println();
+        //convert Integer[] to int[]
+        int[] array = Arrays.stream(parameterList.get(1)).mapToInt(Integer::intValue).toArray();
+        whatFlavors(array, parameterList.get(0)[0]);
     }
 
-    // Complete the whatFlavors function below.
     static void whatFlavors(int[] cost, int money) {
+        System.out.println(whatFlavorsForTest(cost, money));
+    }
+
+
+    // Complete the whatFlavors function below.
+    static String whatFlavorsForTest(int[] cost, int money) {
 
         //Sort list of flowers
         ArrayList<AbstractMap.SimpleEntry<Integer, Integer>> listOfCosts = new ArrayList<>();
@@ -27,21 +48,22 @@ public class Main {
                 break;
             }
             for (int j = i + 1; j < listOfCosts.size(); j++) {
-                if (listOfCosts.get(j).getKey() > money) {
+                int tempSum = listOfCosts.get(i).getKey() + listOfCosts.get(j).getKey();
+                if (tempSum > money) {
                     break;
                 }
-                if (listOfCosts.get(i).getKey() + listOfCosts.get(j).getKey() == money) {
+                if (tempSum == money) {
                     int indexOne = listOfCosts.get(i).getValue() + 1;
                     int indexTwo = listOfCosts.get(j).getValue() + 1;
 
                     if (indexOne < indexTwo) {
-                        System.out.printf("%s %s%n", indexOne, indexTwo);
+                        return String.format("%s %s", indexOne, indexTwo);
                     } else {
-                        System.out.printf("%s %s%n", indexTwo, indexOne);
+                        return String.format("%s %s", indexTwo, indexOne);
                     }
-                    return;
                 }
             }
         }
+        return "";
     }
 }

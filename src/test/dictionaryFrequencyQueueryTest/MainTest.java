@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 import static hashMapFrequencyQueuery.Main.freqQuery;
 import static utilsReadInputFromString.ReadInputFromString.convertString;
 
-public class mainTest {
+public class MainTest {
     @Test
     public void testOne() {
         String str = "8\n" +

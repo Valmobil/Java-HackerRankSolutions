@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 import static hashMapFindTripleIndex.Main.countTriplets;
 
-public class hashMapFindTripleIndexTest {
+public class MainTest {
 
     @Test
     public void testSimpleOne() {

@@ -8,9 +8,6 @@ import static org.junit.Assert.*;
 public class MainTest {
 
 
-//    String input = "eggegg";
-    //        String input = "aeiouuoiea";
-//        String input = "abcdefgabcdefg";
    String input = "bdabaceadaedaaaeaecdeadababdbeaeeacacaba"; //answer aaaaaabaaceededecbdb
 
     @Test
