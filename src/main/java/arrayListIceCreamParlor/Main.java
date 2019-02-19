@@ -35,32 +35,14 @@ public class Main {
     static String whatFlavorsForTest(int[] cost, int money) {
 
         //Sort list of flowers
-        ArrayList<AbstractMap.SimpleEntry<Integer, Integer>> listOfCosts = new ArrayList<>();
+        HashMap<Integer, Integer> listOfCosts = new HashMap();
         for (int i = 0; i < cost.length; i++) {
-            int oneCost = cost[i];
-            listOfCosts.add(new AbstractMap.SimpleEntry<>(oneCost, i));
-        }
-
-        listOfCosts.sort(Comparator.comparingInt(AbstractMap.SimpleEntry::getKey));
-
-        for (int i = 0; i < listOfCosts.size(); i++) {
-            if (listOfCosts.get(i).getKey() > money) {
-                break;
-            }
-            for (int j = i + 1; j < listOfCosts.size(); j++) {
-                int tempSum = listOfCosts.get(i).getKey() + listOfCosts.get(j).getKey();
-                if (tempSum > money) {
-                    break;
-                }
-                if (tempSum == money) {
-                    int indexOne = listOfCosts.get(i).getValue() + 1;
-                    int indexTwo = listOfCosts.get(j).getValue() + 1;
-
-                    if (indexOne < indexTwo) {
-                        return String.format("%s %s", indexOne, indexTwo);
-                    } else {
-                        return String.format("%s %s", indexTwo, indexOne);
-                    }
+            if (cost[i] < money) {
+                int tempSum = money - cost[i];
+                if (listOfCosts.containsKey(tempSum)) {
+                    return String.format("%s %s", listOfCosts.get(tempSum) + 1, i + 1);
+                } else {
+                    listOfCosts.put(cost[i], i);
                 }
             }
         }
