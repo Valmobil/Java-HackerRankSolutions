@@ -2,7 +2,9 @@
   <component name="FileTypeManager" version="17">
     <extensionMap>
       <mapping ext="klib" type="ARCHIVE" />
+      <mapping pattern="script" type="PLAIN_TEXT" />
       <mapping pattern="MyAnnotations" type="PLAIN_TEXT" />
+      <mapping ext="me" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
 </application>
