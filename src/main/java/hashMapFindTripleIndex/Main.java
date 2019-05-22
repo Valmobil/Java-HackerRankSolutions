@@ -22,8 +22,8 @@ public class Main {
 //        List<Long> longList = Arrays.stream(arrInt).boxed().collect(Collectors.toList());
 
         //Input From File
-        List<Long> arr = readFromFile("src/main/java/hashMapFindTripleIndex/input/input4.txt");
-        System.out.println(countTriplets(arr, r));
+//        List<Long> arr = readFromFile("src/main/java/hashMapFindTripleIndex/input/input4.txt",1);
+//        System.out.println(countTriplets(arr, r));
     }
 
 

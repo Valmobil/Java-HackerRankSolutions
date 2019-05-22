@@ -1,7 +1,7 @@
 package binaryTreeSwapNodes;
 
 public class BinaryTreeNode {
-    private BinaryTreeNode head;
+//    private BinaryTreeNode head;
     private BinaryTreeNode left;
     private BinaryTreeNode right;
     private int value;
@@ -12,13 +12,13 @@ public class BinaryTreeNode {
         this.level = level;
     }
 
-    public BinaryTreeNode getHead() {
-        return head;
-    }
-
-    public void setHead(BinaryTreeNode head) {
-        this.head = head;
-    }
+//    public BinaryTreeNode getHead() {
+//        return head;
+//    }
+//
+//    public void setHead(BinaryTreeNode head) {
+//        this.head = head;
+//    }
 
     public BinaryTreeNode getLeft() {
         return left;
