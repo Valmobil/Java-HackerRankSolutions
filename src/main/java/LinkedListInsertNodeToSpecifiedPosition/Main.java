@@ -1,7 +1,9 @@
+package LinkedListInsertNodeToSpecifiedPosition;
+
 import java.util.LinkedList;
 import java.util.List;
 
-public class LinkedListInsertNodeToSpecifiedPosition {
+public class Main {
 
   static class SinglyLinkedListNode {
     public int data;
@@ -40,7 +42,7 @@ public class LinkedListInsertNodeToSpecifiedPosition {
     list.insertNode(16);
     list.insertNode(13);
     list.insertNode(7);
-//    list.insertNode(3);
+    list.insertNode(3);
     insertNodeAtPosition(list.head, 1, 2);
   }
 
