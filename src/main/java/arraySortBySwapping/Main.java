@@ -1,13 +1,6 @@
 package arraySortBySwapping;
 
-import com.sun.deploy.util.ArrayUtil;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.IntStream;
-
-import static java.util.Comparator.comparingInt;
 
 public class Main {
     public static void main(String[] args) {

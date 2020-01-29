@@ -1,13 +1,5 @@
 package stringIfChildStringExists;
 
-import com.sun.corba.se.spi.ior.TaggedProfileTemplate;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-
-import static javafx.scene.input.KeyCode.T;
-
 public class Main {
     public static void main(String[] args) {
 //        System.out.println(commonChild("HARRY", "SALLY"));
