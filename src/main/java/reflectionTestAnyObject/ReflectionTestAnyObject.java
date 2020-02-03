@@ -1,6 +1,7 @@
 package reflectionTestAnyObject;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
@@ -27,8 +28,21 @@ public class ReflectionTestAnyObject {
       printConstructors(cl);
       System.out.println();
       printMethods(cl);
+      System.out.println();
+      printFields(cl);
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
+    }
+  }
+
+  private static void printFields(Class cl) {
+    Field[] fields = cl.getDeclaredFields();
+    for (int i = 0; i < fields.length; i++) {
+      Field field = fields[i];
+      Class type = field.getType();
+      String name = field.getName();
+      String modifier = Modifier.toString(field.getModifiers());
+      System.out.printf("%s %s %s; \n", modifier, type, name);
     }
   }
 
